@@ -1,0 +1,2 @@
+include ':app',':ringscaleview',':openscale'
+rootProject.name='WeightDemo'

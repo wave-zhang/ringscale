@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="fat"
+            type="Float" />
+
+        <variable
+            name="weight"
+            type="Float" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btn_start"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="连接 Xiao mi"
+        android:onClick="onXiaomiClick"
+        />
+
+    <Button
+        android:id="@+id/btn_stop"
+        app:layout_constraintTop_toBottomOf="@id/btn_start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="关闭 Xiao mi"
+        android:onClick="onCloseClick"
+        />
+
+    <View
+        android:id="@+id/v_bg"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="#898989"
+        />
+
+    <View
+        android:id="@+id/v_bg_2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="457dp"
+        android:background="@drawable/weight_fat_bg"
+        />
+
+    <RadioGroup
+        android:id="@+id/rg_title"
+        android:layout_marginTop="49dp"
+        app:layout_constraintTop_toTopOf="@id/v_bg_2"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:layout_marginRight="48dp"
+        android:layout_marginLeft="48dp"
+        android:orientation="horizontal"
+        android:background="@drawable/radio_group_weight_bg"
+        android:gravity="center_vertical"
+        >
+
+        <RadioButton
+            android:id="@+id/rb_1"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="体重记录"
+            android:textSize="16dp"
+            android:layout_marginLeft="1dp"
+            android:textColor="@drawable/title_weight_text_css"
+            android:button="@null"
+            android:background="@drawable/title_weight_css"
+            android:gravity="center"
+            android:checked="true"
+            />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#D0D0D0"/>
+
+        <RadioButton
+            android:id="@+id/rb_2"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:text="体脂记录"
+            android:textSize="16dp"
+            android:button="@null"
+            android:gravity="center"
+            android:layout_marginRight="1dp"
+            android:textColor="@drawable/title_weight_text_css"
+            android:background="@drawable/title_weight_right_css"
+            />
+
+    </RadioGroup>
+
+    <!-- 环称 -->
+    <com.wave.view.RingScaleView
+        android:id="@+id/rs"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/v_bg_2"
+        android:layout_marginTop="130dp"
+        android:layout_width="match_parent"
+        android:layout_height="136dp" />
+
+    <LinearLayout
+        android:layout_marginTop="159dp"
+        android:id="@+id/ll_weight"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:layout_constraintTop_toBottomOf="@id/rg_title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:gravity="bottom|center_horizontal"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="体重"
+            android:textColor="#7D7D7D"
+            android:textSize="14sp"
+            android:layout_marginRight="11dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(weight),default=ddd}"
+            android:textSize="48dp"
+            android:textColor="#202020"
+            android:fontFamily="@font/oswald_regular"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="kg"
+            android:textColor="#7D7D7D"
+            android:textSize="14sp"
+            android:layout_marginLeft="7dp"
+            />
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/ll_fat"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toTopOf="@id/ll_weight"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:gravity="bottom|center_horizontal"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="体脂"
+            android:textColor="#7D7D7D"
+            android:textSize="14sp"
+            android:layout_marginRight="11dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_fat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(fat),default=ddd}"
+            android:textSize="25dp"
+            android:textColor="#202020"
+            android:fontFamily="@font/oswald_regular"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="%"
+            android:textColor="#7D7D7D"
+            android:textSize="14sp"
+            android:layout_marginLeft="7dp"
+            />
+
+    </LinearLayout>
+
+    <View
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#D0D0D0"
+        />
+
+    <View
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="1dp"
+        android:layout_height="49dp"
+        android:background="#D0D0D0"
+        />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
